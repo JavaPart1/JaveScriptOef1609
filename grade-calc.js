@@ -21,5 +21,5 @@ let studentScore = function (score = 0,total = 20) {
     return `${score}/${total} -> you got a ${letterScore} (${percent}/100)!`;
 }
 
-let score = 15;
+let score = 19;
 console.log(studentScore(score));
