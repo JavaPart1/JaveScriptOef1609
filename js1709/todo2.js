@@ -1,13 +1,4 @@
 // O'Reilly
-//const myTodos = ["Follow training","take a walk","go to hairdresser","buy gift","watch tv"];
-//console.log(myTodos.length);
-//console.log(myTodos[0]);
-//
-//console.log(myTodos[myTodos.length-2]);
-//
-//myTodos.forEach(function (item, index) {
-//    console.log(`${index+1}. ${item}`);
-//})
 
 const nwTodos = [{
     text: "Follow training",
@@ -53,19 +44,6 @@ const sortTodos = function (todos) {
     });
 }
 
-/*sortTodos(nwTodos);
-console.log(nwTodos);*/
-
-//deleteTodo(nwTodos, "go to hairdresser");
-//console.log(nwTodos);
-
-/*const ps = document.querySelectorAll('p');
-ps.forEach(function(p) {
-    if (p.innerText.includes('to')) {
-        p.remove();
-    }
-})*/
-
 const stillTodo = getStillTodo(nwTodos).length;
 console.log(`You have still ${stillTodo} todos left.`)
 
@@ -80,6 +58,9 @@ nwTodos.forEach (function(item) {
     document.querySelector("body").appendChild(newP);
 })
 
+document.querySelector("button").addEventListener("click", function(e) {
+    console.log('Add e new todo..')
+})
 
 
 
