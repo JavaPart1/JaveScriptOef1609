@@ -28,11 +28,35 @@ const renderTodos = function (todos, filters){
 
     document.querySelector("#todos").innerHTML = '';
 
+/*
     filteredTodos.forEach(function(todo) {
         const todoElement = document.createElement("p");
         todoElement.textContent = todo.text;
         document.querySelector('#todos').appendChild(todoElement);
     })
+*/
+
+    filteredTodos.forEach (function(item) {
+        const newP = document.createElement("p");
+        newP.textContent = item.text;
+        document.querySelector("#todos").appendChild(newP);
+    })
+
+    const stillTodo = getStillTodo(filteredTodos);
+    console.log(`You have still ${stillTodo.length} todos left.`)
+
+    const newP = document.createElement("h3");
+    newP.textContent = `You have still ${stillTodo.length} todos left.`;
+    document.querySelector("#todos").appendChild(newP);
+
+    stillTodo.forEach (function(item) {
+        const newP = document.createElement("p");
+        newP.textContent = item.text;
+        document.querySelector("#todos").appendChild(newP);
+    })
+
+
+
 }
 
 document.querySelector("#addTodo").addEventListener("click", function(e) {
@@ -45,10 +69,13 @@ document.querySelector("#addNwTodo").addEventListener("input", function(e) {
 })
 
 document.querySelector("#searchTodo").addEventListener("input", function(e) {
-    console.log(e.target.value);
     filters.searchText = e.target.value;
     renderTodos(nwTodos,filters);
 })
+
+
+
+
 
 
 
@@ -79,19 +106,6 @@ const sortTodos = function (todos) {
     });
 }
 
-const stillTodo = getStillTodo(nwTodos).length;
-console.log(`You have still ${stillTodo} todos left.`)
-
-    const newP = document.createElement("p");
-    newP.textContent = `You have still ${stillTodo} todos left.`;
-    document.querySelector("body").appendChild(newP);
-
-
-nwTodos.forEach (function(item) {
-    const newP = document.createElement("p");
-    newP.textContent = item.text;
-    document.querySelector("body").appendChild(newP);
-})
 
 
 
