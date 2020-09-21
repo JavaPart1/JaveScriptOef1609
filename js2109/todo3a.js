@@ -18,16 +18,12 @@ const nwTodos = [{
 }];
 
 const filters = {
-    searchText: '',
-    hideCompleted: false
+    searchText: ''
 }
 
 const renderTodos = function (todos, filters){
     const filteredTodos = todos.filter(function(todo) {
-        const textMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
-
-        return textMatch && hideCompletedMatch;
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
     })
 
     document.querySelector("#todos").innerHTML = '';
@@ -38,6 +34,18 @@ const renderTodos = function (todos, filters){
         document.querySelector("#todos").appendChild(newP);
     })
 
+//    const stillTodo = getStillTodo(filteredTodos);
+//    console.log(`You have still ${stillTodo.length} todos left.`)
+//
+//    const newP = document.createElement("h3");
+//    newP.textContent = `You have still ${stillTodo.length} todos left.`;
+//    document.querySelector("#todos").appendChild(newP);
+//
+//    stillTodo.forEach (function(item) {
+//        const newP = document.createElement("p");
+//        newP.textContent = item.text;
+//        document.querySelector("#todos").appendChild(newP);
+//    })
 }
 
 // Functions
@@ -100,19 +108,13 @@ document.querySelector("#searchTodo").addEventListener("input", function(e) {
 
 document.querySelector("#hidecompleted").addEventListener("change", function(e) {
     console.log(e.target.checked);
-    filters.hideCompleted = e.target.checked;
-    renderTodos(nwTodos,filters);
-//    let checkTodo;
-//    if (e.target.checked){
-//        // hide completed true
-//        renderTodos(getStillTodo(nwTodos),filters);
-//    } else {
-//        renderTodos(nwTodos,filters);
-//    }
-})
-
-document.querySelector("#filterby").addEventListener("change", function(e) {
-    console.log(e.target.value);
+    let checkTodo;
+    if (e.target.checked){
+        // hide completed true
+        renderTodos(getStillTodo(nwTodos),filters);
+    } else {
+        renderTodos(nwTodos,filters);
+    }
 })
 
 

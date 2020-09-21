@@ -11,11 +11,26 @@
 
 <body>
 <h1>Todos</h1>
-<form
-<input id="searchTodo" type="text" placeholder="Filter">
-<div id="todos">
 
+<label>Search:
+  <input id="searchTodo" type="text" placeholder="Filter">
+</label>
+<label>
+  <input id="hidecompleted" type="checkbox"> Hide completed
+</label>
+<select id="filterby">
+  <option value="byEdited">Sort by last edited</option>
+</select>
+
+<div id="todos">
 </div>
+
+
+<form id="todoForm">
+  <input type="text" placeholder="Todo text" name="todoText">
+  <button>Submit</button>
+</form>
+
 
 
 <!--<p>watch tv</p>

@@ -23,11 +23,12 @@ const filters = {
 }
 
 const renderTodos = function (todos, filters){
-    const filteredTodos = todos.filter(function(todo) {
-        const textMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
+    let filteredTodos = todos.filter(function(todo) {
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+    })
 
-        return textMatch && hideCompletedMatch;
+    filteredTodos = filteredTodos.filter(function(todo){
+        return !filters.hideCompleted || !todo.completed
     })
 
     document.querySelector("#todos").innerHTML = '';
@@ -109,10 +110,6 @@ document.querySelector("#hidecompleted").addEventListener("change", function(e) 
 //    } else {
 //        renderTodos(nwTodos,filters);
 //    }
-})
-
-document.querySelector("#filterby").addEventListener("change", function(e) {
-    console.log(e.target.value);
 })
 
 
